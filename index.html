@@ -83,7 +83,11 @@
                 <div class="tab-wrapper">
                     <div class="tab-indicator"></div>
                     <div class="tab-buttons">
-                        <button class="tab-btn active" data-tab="market-overview">
+                        <button class="tab-btn active" data-tab="local-communities">
+                            <i class="fas fa-th-large"></i>
+                            <span>Local Communities</span>
+                        </button>
+                        <button class="tab-btn" data-tab="market-overview">
                             <i class="fas fa-chart-pie"></i>
                             <span>Overview</span>
                         </button>
@@ -116,8 +120,151 @@
         <main class="dashboard-content">
             <div class="container">
 
+                <!-- Local Communities Tab -->
+                <section id="local-communities" class="tab-content active">
+                    <div class="section-header animated-header">
+                        <h3>
+                            <span class="section-icon"><i class="fas fa-th-large"></i></span>
+                            South Florida Luxury Communities Market Analysis
+                        </h3>
+                        <p class="section-description">Updated active listings and sold properties across 21 premier communities</p>
+                    </div>
+
+                    <!-- St. Andrews Highlight Box -->
+                    <div class="community-highlight-box">
+                        <div class="highlight-header">
+                            <i class="fas fa-golf-ball"></i>
+                            <h3>St. Andrews Country Club - Market Leader</h3>
+                        </div>
+                        <div class="highlight-stats">
+                            <div class="stat-card">
+                                <div class="stat-label">Highest Sale</div>
+                                <div class="stat-value green">$10,500,000</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Lowest Sale</div>
+                                <div class="stat-value blue">$2,150,000</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Active Listings</div>
+                                <div class="stat-value">15</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Properties Sold</div>
+                                <div class="stat-value">27</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Sold Ratio</div>
+                                <div class="stat-value gold">64.3%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Community Data Grid -->
+                    <div class="communities-grid">
+                        <h4 class="grid-title">Complete Market Activity by Community</h4>
+
+                        <!-- Chart Type Selector -->
+                        <div class="chart-controls">
+                            <select id="community-chart-type" class="chart-selector">
+                                <option value="bar">Bar Chart View</option>
+                                <option value="table">Table View</option>
+                            </select>
+                            <select id="community-sort" class="chart-selector">
+                                <option value="name">Sort by Name</option>
+                                <option value="active">Sort by Active</option>
+                                <option value="sold">Sort by Sold</option>
+                                <option value="total">Sort by Total Activity</option>
+                            </select>
+                        </div>
+
+                        <!-- Bar Chart View -->
+                        <div id="communities-bar-chart" class="chart-wrapper">
+                            <canvas id="communities-chart"></canvas>
+                        </div>
+
+                        <!-- Table View (hidden by default) -->
+                        <div id="communities-table" class="communities-table" style="display: none;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Community</th>
+                                        <th>Active</th>
+                                        <th>Sold</th>
+                                        <th>Total</th>
+                                        <th>Sold Ratio</th>
+                                        <th>Market Trend</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="communities-table-body">
+                                    <!-- Table rows will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Market Summary Cards -->
+                    <div class="market-summary-grid">
+                        <div class="summary-card">
+                            <i class="fas fa-home"></i>
+                            <h4>Total Active Listings</h4>
+                            <div class="summary-value">332</div>
+                            <div class="summary-change positive">+28 from last month</div>
+                        </div>
+                        <div class="summary-card">
+                            <i class="fas fa-handshake"></i>
+                            <h4>Total Properties Sold</h4>
+                            <div class="summary-value">635</div>
+                            <div class="summary-change positive">+45 from last month</div>
+                        </div>
+                        <div class="summary-card">
+                            <i class="fas fa-percentage"></i>
+                            <h4>Average Sold Ratio</h4>
+                            <div class="summary-value">65.6%</div>
+                            <div class="summary-change">Balanced Market</div>
+                        </div>
+                        <div class="summary-card">
+                            <i class="fas fa-trophy"></i>
+                            <h4>Top Performer</h4>
+                            <div class="summary-value">Delaire</div>
+                            <div class="summary-change">85% Sold Ratio</div>
+                        </div>
+                    </div>
+
+                    <!-- Top Communities Section -->
+                    <div class="top-communities">
+                        <h4 class="section-subtitle">Market Leaders by Performance</h4>
+                        <div class="leaders-grid">
+                            <div class="leader-card">
+                                <h5>Highest Activity</h5>
+                                <ol class="leader-list">
+                                    <li><span class="community-name">Boca West</span> <span class="community-stat">211 total</span></li>
+                                    <li><span class="community-name">Broken Sound</span> <span class="community-stat">113 total</span></li>
+                                    <li><span class="community-name">Polo Club</span> <span class="community-stat">68 total</span></li>
+                                </ol>
+                            </div>
+                            <div class="leader-card">
+                                <h5>Best Sold Ratio</h5>
+                                <ol class="leader-list">
+                                    <li><span class="community-name">Delaire</span> <span class="community-stat">85.0%</span></li>
+                                    <li><span class="community-name">Polo Club</span> <span class="community-stat">79.4%</span></li>
+                                    <li><span class="community-name">Boca West</span> <span class="community-stat">76.3%</span></li>
+                                </ol>
+                            </div>
+                            <div class="leader-card">
+                                <h5>Most Active Listings</h5>
+                                <ol class="leader-list">
+                                    <li><span class="community-name">Boca West</span> <span class="community-stat">50 active</span></li>
+                                    <li><span class="community-name">Royal Palm YC</span> <span class="community-stat">35 active</span></li>
+                                    <li><span class="community-name">Broken Sound</span> <span class="community-stat">28 active</span></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Market Overview Tab -->
-                <section id="market-overview" class="tab-content active">
+                <section id="market-overview" class="tab-content">
                     <div class="section-header animated-header">
                         <h3>
                             <span class="section-icon"><i class="fas fa-chart-line"></i></span>

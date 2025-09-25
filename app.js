@@ -1,3 +1,28 @@
+// Community Data for Territory Pricing
+const communitiesData = [
+    { name: 'St. Andrews', active: 15, sold: 27, total: 42, soldRatio: 64.3, priceRange: '$2.15M - $10.5M' },
+    { name: 'Addison Reserve', active: 11, sold: 23, total: 34, soldRatio: 67.6 },
+    { name: 'The Oaks', active: 12, sold: 28, total: 40, soldRatio: 70.0 },
+    { name: 'Delaire', active: 3, sold: 17, total: 20, soldRatio: 85.0 },
+    { name: 'The Bridges', active: 10, sold: 18, total: 28, soldRatio: 64.3 },
+    { name: 'Seven Bridges', active: 14, sold: 28, total: 42, soldRatio: 66.7 },
+    { name: 'Boca Grove', active: 7, sold: 13, total: 20, soldRatio: 65.0 },
+    { name: 'Boca West', active: 50, sold: 161, total: 211, soldRatio: 76.3 },
+    { name: 'Boca Bridges', active: 9, sold: 25, total: 34, soldRatio: 73.5 },
+    { name: 'Lotus', active: 18, sold: 33, total: 51, soldRatio: 64.7 },
+    { name: 'Bocaire Country Club', active: 13, sold: 18, total: 31, soldRatio: 58.1 },
+    { name: 'The Sanctuary', active: 8, sold: 6, total: 14, soldRatio: 42.9 },
+    { name: 'Polo Club', active: 14, sold: 54, total: 68, soldRatio: 79.4 },
+    { name: 'Mizner Country Club', active: 8, sold: 10, total: 18, soldRatio: 55.6 },
+    { name: 'Long Lake Estates', active: 7, sold: 3, total: 10, soldRatio: 30.0 },
+    { name: 'Broken Sound', active: 28, sold: 85, total: 113, soldRatio: 75.2 },
+    { name: 'Royal Palm Yacht Club', active: 35, sold: 29, total: 64, soldRatio: 45.3 },
+    { name: 'Le Lac', active: 0, sold: 0, total: 0, soldRatio: 0 },
+    { name: 'Seasons', active: 8, sold: 8, total: 16, soldRatio: 50.0 },
+    { name: 'Woodfield', active: 18, sold: 48, total: 66, soldRatio: 72.7 },
+    { name: 'Stonebridge', active: 14, sold: 18, total: 32, soldRatio: 56.3 }
+].filter(item => item.total > 0); // Filter out communities with no activity
+
 // Enhanced Market Data
 const marketData = {
   boca_raton_single_family: {
@@ -94,6 +119,14 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('✓ Charts initialized');
   } catch(e) {
     console.error('Error initializing charts:', e);
+  }
+
+  try {
+    initializeCommunitiesChart();
+    initializeCommunitiesControls();
+    console.log('✓ Communities chart initialized');
+  } catch(e) {
+    console.error('Error initializing communities chart:', e);
   }
 
   try {
@@ -1095,6 +1128,155 @@ function initializePriceSegmentCharts() {
         }
       }
     });
+  }
+}
+
+// Initialize Communities Chart
+function initializeCommunitiesChart() {
+  const ctx = document.getElementById('communities-chart');
+  if (!ctx) return;
+
+  const sortedData = [...communitiesData].sort((a, b) => b.total - a.total);
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: sortedData.map(c => c.name),
+      datasets: [
+        {
+          label: 'Properties Sold',
+          data: sortedData.map(c => c.sold),
+          backgroundColor: '#2c3e50',
+          borderRadius: 4
+        },
+        {
+          label: 'Active Listings',
+          data: sortedData.map(c => c.active),
+          backgroundColor: '#c4963d',
+          borderRadius: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            padding: 15,
+            font: { size: 12, weight: 'bold' }
+          }
+        },
+        tooltip: {
+          callbacks: {
+            afterLabel: function(context) {
+              const index = context.dataIndex;
+              const community = sortedData[index];
+              return `Total Activity: ${community.total}\nSold Ratio: ${community.soldRatio}%`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: {
+            autoSkip: false,
+            maxRotation: 45,
+            minRotation: 45
+          }
+        },
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Number of Properties'
+          }
+        }
+      }
+    }
+  });
+}
+
+// Initialize Communities Controls
+function initializeCommunitiesControls() {
+  const chartTypeSelector = document.getElementById('community-chart-type');
+  const sortSelector = document.getElementById('community-sort');
+  const chartContainer = document.getElementById('communities-bar-chart');
+  const tableContainer = document.getElementById('communities-table');
+
+  if (!chartTypeSelector || !sortSelector) return;
+
+  // Chart Type Toggle
+  chartTypeSelector.addEventListener('change', function() {
+    if (this.value === 'table') {
+      chartContainer.style.display = 'none';
+      tableContainer.style.display = 'block';
+      populateCommunitiesTable();
+    } else {
+      chartContainer.style.display = 'block';
+      tableContainer.style.display = 'none';
+    }
+  });
+
+  // Sort Control
+  sortSelector.addEventListener('change', function() {
+    updateCommunitiesChart(this.value);
+  });
+}
+
+// Populate Communities Table
+function populateCommunitiesTable() {
+  const tbody = document.getElementById('communities-table-body');
+  if (!tbody) return;
+
+  tbody.innerHTML = communitiesData.map(community => {
+    const trend = community.soldRatio > 70 ? 'Hot' :
+                  community.soldRatio > 50 ? 'Active' : 'Slow';
+    const trendColor = trend === 'Hot' ? '#ef4444' :
+                       trend === 'Active' ? '#f59e0b' : '#6b7280';
+
+    return `
+      <tr>
+        <td style="font-weight: 600">${community.name}</td>
+        <td>${community.active}</td>
+        <td>${community.sold}</td>
+        <td>${community.total}</td>
+        <td><span style="color: ${community.soldRatio > 65 ? '#10b981' : '#6b7280'}">${community.soldRatio}%</span></td>
+        <td><span style="color: ${trendColor}; font-weight: 600">${trend}</span></td>
+      </tr>
+    `;
+  }).join('');
+}
+
+// Update Communities Chart with Sorting
+function updateCommunitiesChart(sortBy) {
+  const ctx = document.getElementById('communities-chart');
+  if (!ctx) return;
+
+  let sortedData = [...communitiesData];
+
+  switch(sortBy) {
+    case 'active':
+      sortedData.sort((a, b) => b.active - a.active);
+      break;
+    case 'sold':
+      sortedData.sort((a, b) => b.sold - a.sold);
+      break;
+    case 'total':
+      sortedData.sort((a, b) => b.total - a.total);
+      break;
+    default:
+      sortedData.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  // Get the existing chart instance and update it
+  const chartInstance = Chart.getChart(ctx);
+  if (chartInstance) {
+    chartInstance.data.labels = sortedData.map(c => c.name);
+    chartInstance.data.datasets[0].data = sortedData.map(c => c.sold);
+    chartInstance.data.datasets[1].data = sortedData.map(c => c.active);
+    chartInstance.update();
   }
 }
 
