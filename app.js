@@ -1131,12 +1131,23 @@ function initializePriceSegmentCharts() {
   }
 }
 
-// Initialize Communities Chart
+// Initialize Communities Chart with Enhanced Styling
 function initializeCommunitiesChart() {
   const ctx = document.getElementById('communities-chart');
   if (!ctx) return;
 
   const sortedData = [...communitiesData].sort((a, b) => b.total - a.total);
+
+  // Create gradient fills
+  const ctxElement = ctx.getContext('2d');
+
+  const gradientSold = ctxElement.createLinearGradient(0, 0, 0, 400);
+  gradientSold.addColorStop(0, 'rgba(30, 41, 59, 0.9)');
+  gradientSold.addColorStop(1, 'rgba(30, 41, 59, 0.6)');
+
+  const gradientActive = ctxElement.createLinearGradient(0, 0, 0, 400);
+  gradientActive.addColorStop(0, 'rgba(251, 191, 36, 0.9)');
+  gradientActive.addColorStop(1, 'rgba(245, 158, 11, 0.6)');
 
   new Chart(ctx, {
     type: 'bar',
@@ -1146,51 +1157,105 @@ function initializeCommunitiesChart() {
         {
           label: 'Properties Sold',
           data: sortedData.map(c => c.sold),
-          backgroundColor: '#2c3e50',
-          borderRadius: 4
+          backgroundColor: gradientSold,
+          borderRadius: 6,
+          borderWidth: 0,
+          barThickness: 'flex',
+          maxBarThickness: 40
         },
         {
           label: 'Active Listings',
           data: sortedData.map(c => c.active),
-          backgroundColor: '#c4963d',
-          borderRadius: 4
+          backgroundColor: gradientActive,
+          borderRadius: 6,
+          borderWidth: 0,
+          barThickness: 'flex',
+          maxBarThickness: 40
         }
       ]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      layout: {
+        padding: {
+          top: 20,
+          bottom: 20,
+          left: 10,
+          right: 10
+        }
+      },
       plugins: {
         legend: {
           position: 'top',
           labels: {
-            padding: 15,
-            font: { size: 12, weight: 'bold' }
+            padding: 20,
+            font: {
+              size: 14,
+              weight: '600',
+              family: "'Inter', -apple-system, sans-serif"
+            },
+            usePointStyle: true,
+            pointStyle: 'rectRounded'
           }
         },
         tooltip: {
+          backgroundColor: 'rgba(30, 41, 59, 0.95)',
+          titleFont: { size: 14, weight: 'bold' },
+          bodyFont: { size: 13 },
+          padding: 15,
+          cornerRadius: 10,
+          displayColors: true,
           callbacks: {
             afterLabel: function(context) {
               const index = context.dataIndex;
               const community = sortedData[index];
-              return `Total Activity: ${community.total}\nSold Ratio: ${community.soldRatio}%`;
+              return [
+                `Total Activity: ${community.total}`,
+                `Sold Ratio: ${community.soldRatio}%`,
+                community.priceRange ? `Price Range: ${community.priceRange}` : ''
+              ].filter(Boolean);
             }
           }
         }
       },
       scales: {
         x: {
+          grid: {
+            display: false
+          },
           ticks: {
             autoSkip: false,
             maxRotation: 45,
-            minRotation: 45
+            minRotation: 45,
+            font: {
+              size: 12,
+              weight: '600'
+            },
+            color: '#64748b'
           }
         },
         y: {
           beginAtZero: true,
+          grid: {
+            color: 'rgba(0, 0, 0, 0.05)',
+            drawBorder: false
+          },
+          ticks: {
+            font: {
+              size: 12,
+              weight: '500'
+            },
+            color: '#64748b'
+          },
           title: {
             display: true,
-            text: 'Number of Properties'
+            text: 'Number of Properties',
+            font: {
+              size: 14,
+              weight: '600'
+            },
+            color: '#1e293b'
           }
         }
       }
@@ -1200,29 +1265,47 @@ function initializeCommunitiesChart() {
 
 // Initialize Communities Controls
 function initializeCommunitiesControls() {
-  const chartTypeSelector = document.getElementById('community-chart-type');
+  const viewButtons = document.querySelectorAll('.viz-btn');
   const sortSelector = document.getElementById('community-sort');
   const chartContainer = document.getElementById('communities-bar-chart');
   const tableContainer = document.getElementById('communities-table');
+  const cardsContainer = document.getElementById('communities-cards');
 
-  if (!chartTypeSelector || !sortSelector) return;
+  // View Toggle Buttons
+  viewButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      // Remove active class from all buttons
+      viewButtons.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
 
-  // Chart Type Toggle
-  chartTypeSelector.addEventListener('change', function() {
-    if (this.value === 'table') {
-      chartContainer.style.display = 'none';
-      tableContainer.style.display = 'block';
-      populateCommunitiesTable();
-    } else {
-      chartContainer.style.display = 'block';
-      tableContainer.style.display = 'none';
-    }
+      // Hide all containers
+      if (chartContainer) chartContainer.classList.remove('active');
+      if (tableContainer) tableContainer.classList.remove('active');
+      if (cardsContainer) cardsContainer.classList.remove('active');
+
+      // Show selected view
+      const view = this.getAttribute('data-view');
+      if (view === 'table') {
+        tableContainer.classList.add('active');
+        populateCommunitiesTable();
+      } else if (view === 'cards') {
+        cardsContainer.classList.add('active');
+        populateCommunitiesCards();
+      } else {
+        chartContainer.classList.add('active');
+      }
+    });
   });
 
   // Sort Control
-  sortSelector.addEventListener('change', function() {
-    updateCommunitiesChart(this.value);
-  });
+  if (sortSelector) {
+    sortSelector.addEventListener('change', function() {
+      updateCommunitiesChart(this.value);
+    });
+  }
+
+  // Animate value counters
+  animateInsightValues();
 }
 
 // Populate Communities Table
@@ -1266,6 +1349,9 @@ function updateCommunitiesChart(sortBy) {
     case 'total':
       sortedData.sort((a, b) => b.total - a.total);
       break;
+    case 'ratio':
+      sortedData.sort((a, b) => b.soldRatio - a.soldRatio);
+      break;
     default:
       sortedData.sort((a, b) => a.name.localeCompare(b.name));
   }
@@ -1278,6 +1364,64 @@ function updateCommunitiesChart(sortBy) {
     chartInstance.data.datasets[1].data = sortedData.map(c => c.active);
     chartInstance.update();
   }
+}
+
+// Populate Communities Cards View
+function populateCommunitiesCards() {
+  const container = document.getElementById('communities-cards');
+  if (!container) return;
+
+  container.innerHTML = communitiesData.map(community => {
+    const performanceClass = community.soldRatio > 70 ? 'hot' :
+                           community.soldRatio > 50 ? 'active' : 'slow';
+
+    return `
+      <div class="community-card ${performanceClass}">
+        <div class="community-card-header">
+          <h4>${community.name}</h4>
+          ${community.priceRange ? `<span class="price-range">${community.priceRange}</span>` : ''}
+        </div>
+        <div class="community-card-body">
+          <div class="community-stat">
+            <span class="stat-label">Active</span>
+            <span class="stat-value">${community.active}</span>
+          </div>
+          <div class="community-stat">
+            <span class="stat-label">Sold</span>
+            <span class="stat-value">${community.sold}</span>
+          </div>
+          <div class="community-stat highlight">
+            <span class="stat-label">Performance</span>
+            <span class="stat-value">${community.soldRatio}%</span>
+          </div>
+        </div>
+        <div class="community-card-footer">
+          <div class="activity-bar">
+            <div class="activity-fill" style="width: ${community.soldRatio}%"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// Animate Insight Values
+function animateInsightValues() {
+  const valueElements = document.querySelectorAll('.card-value[data-value]');
+
+  valueElements.forEach(element => {
+    const target = parseInt(element.getAttribute('data-value'));
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      element.textContent = Math.round(current).toLocaleString();
+    }, 30);
+  });
 }
 
 console.log('Luxury Market Interactive Dashboard Initialized');

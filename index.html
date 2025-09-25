@@ -122,112 +122,221 @@
 
                 <!-- Local Communities Tab -->
                 <section id="local-communities" class="tab-content active">
-                    <div class="section-header animated-header">
-                        <h3>
-                            <span class="section-icon"><i class="fas fa-th-large"></i></span>
-                            South Florida Luxury Communities Market Analysis
+                    <!-- Animated Background -->
+                    <div class="communities-bg-animation"></div>
+
+                    <div class="section-header premium-header">
+                        <div class="header-glow"></div>
+                        <h3 class="premium-title">
+                            <span class="icon-wrapper"><i class="fas fa-crown"></i></span>
+                            <span class="title-text">South Florida's Premier Communities</span>
+                            <span class="subtitle-badge">Exclusive Market Intelligence</span>
                         </h3>
-                        <p class="section-description">Updated active listings and sold properties across 21 premier communities</p>
+                        <p class="premium-description">Real-time analysis of 21 luxury communities with over $1B in combined inventory</p>
                     </div>
 
-                    <!-- St. Andrews Highlight Box -->
-                    <div class="community-highlight-box">
-                        <div class="highlight-header">
-                            <i class="fas fa-golf-ball"></i>
-                            <h3>St. Andrews Country Club - Market Leader</h3>
+                    <!-- St. Andrews Showcase -->
+                    <div class="st-andrews-showcase">
+                        <div class="showcase-background">
+                            <div class="animated-gradient"></div>
+                            <div class="pattern-overlay"></div>
                         </div>
-                        <div class="highlight-stats">
-                            <div class="stat-card">
-                                <div class="stat-label">Highest Sale</div>
-                                <div class="stat-value green">$10,500,000</div>
+                        <div class="showcase-content">
+                            <div class="showcase-header">
+                                <div class="icon-luxury">
+                                    <i class="fas fa-golf-ball"></i>
+                                    <div class="icon-ring"></div>
+                                </div>
+                                <div class="showcase-titles">
+                                    <h3 class="showcase-title">St. Andrews Country Club</h3>
+                                    <p class="showcase-subtitle">Boca Raton's Crown Jewel</p>
+                                </div>
+                                <div class="showcase-badge">FEATURED</div>
                             </div>
-                            <div class="stat-card">
-                                <div class="stat-label">Lowest Sale</div>
-                                <div class="stat-value blue">$2,150,000</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-label">Active Listings</div>
-                                <div class="stat-value">15</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-label">Properties Sold</div>
-                                <div class="stat-value">27</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-label">Sold Ratio</div>
-                                <div class="stat-value gold">64.3%</div>
+                            <div class="showcase-metrics">
+                                <div class="metric-item premium">
+                                    <div class="metric-icon"><i class="fas fa-chart-line"></i></div>
+                                    <div class="metric-info">
+                                        <span class="metric-label">Peak Sale</span>
+                                        <span class="metric-value">$10.5M</span>
+                                    </div>
+                                    <div class="metric-glow"></div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-icon"><i class="fas fa-tag"></i></div>
+                                    <div class="metric-info">
+                                        <span class="metric-label">Entry Point</span>
+                                        <span class="metric-value">$2.15M</span>
+                                    </div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-icon"><i class="fas fa-home"></i></div>
+                                    <div class="metric-info">
+                                        <span class="metric-label">Active</span>
+                                        <span class="metric-value">15</span>
+                                    </div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-icon"><i class="fas fa-handshake"></i></div>
+                                    <div class="metric-info">
+                                        <span class="metric-label">Sold YTD</span>
+                                        <span class="metric-value">27</span>
+                                    </div>
+                                </div>
+                                <div class="metric-item highlight">
+                                    <div class="metric-icon"><i class="fas fa-fire"></i></div>
+                                    <div class="metric-info">
+                                        <span class="metric-label">Market Heat</span>
+                                        <span class="metric-value">64.3%</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Community Data Grid -->
-                    <div class="communities-grid">
-                        <h4 class="grid-title">Complete Market Activity by Community</h4>
-
-                        <!-- Chart Type Selector -->
-                        <div class="chart-controls">
-                            <select id="community-chart-type" class="chart-selector">
-                                <option value="bar">Bar Chart View</option>
-                                <option value="table">Table View</option>
-                            </select>
-                            <select id="community-sort" class="chart-selector">
-                                <option value="name">Sort by Name</option>
-                                <option value="active">Sort by Active</option>
-                                <option value="sold">Sort by Sold</option>
-                                <option value="total">Sort by Total Activity</option>
-                            </select>
+                    <!-- Enhanced Data Visualization -->
+                    <div class="visualization-container">
+                        <div class="viz-header">
+                            <h4 class="viz-title">
+                                <i class="fas fa-chart-bar"></i>
+                                Community Performance Matrix
+                            </h4>
+                            <div class="viz-controls">
+                                <div class="control-group">
+                                    <button class="viz-btn active" data-view="bar">
+                                        <i class="fas fa-chart-bar"></i>
+                                        Chart
+                                    </button>
+                                    <button class="viz-btn" data-view="table">
+                                        <i class="fas fa-table"></i>
+                                        Table
+                                    </button>
+                                    <button class="viz-btn" data-view="cards">
+                                        <i class="fas fa-th"></i>
+                                        Cards
+                                    </button>
+                                </div>
+                                <select id="community-sort" class="premium-select">
+                                    <option value="total">Highest Activity</option>
+                                    <option value="sold">Most Sales</option>
+                                    <option value="active">Most Listings</option>
+                                    <option value="ratio">Best Performance</option>
+                                    <option value="name">Alphabetical</option>
+                                </select>
+                            </div>
                         </div>
 
-                        <!-- Bar Chart View -->
-                        <div id="communities-bar-chart" class="chart-wrapper">
+                        <!-- Chart Container -->
+                        <div id="communities-bar-chart" class="premium-chart-container active">
+                            <div class="chart-gradient-overlay"></div>
                             <canvas id="communities-chart"></canvas>
                         </div>
 
-                        <!-- Table View (hidden by default) -->
-                        <div id="communities-table" class="communities-table" style="display: none;">
-                            <table>
+                        <!-- Table View -->
+                        <div id="communities-table" class="premium-table-container">
+                            <table class="luxury-table">
                                 <thead>
                                     <tr>
-                                        <th>Community</th>
-                                        <th>Active</th>
-                                        <th>Sold</th>
-                                        <th>Total</th>
-                                        <th>Sold Ratio</th>
-                                        <th>Market Trend</th>
+                                        <th><i class="fas fa-building"></i> Community</th>
+                                        <th><i class="fas fa-home"></i> Active</th>
+                                        <th><i class="fas fa-handshake"></i> Sold</th>
+                                        <th><i class="fas fa-chart-pie"></i> Total</th>
+                                        <th><i class="fas fa-percentage"></i> Performance</th>
+                                        <th><i class="fas fa-fire"></i> Status</th>
                                     </tr>
                                 </thead>
                                 <tbody id="communities-table-body">
-                                    <!-- Table rows will be populated by JavaScript -->
+                                    <!-- Populated by JavaScript -->
                                 </tbody>
                             </table>
                         </div>
+
+                        <!-- Cards View -->
+                        <div id="communities-cards" class="community-cards-grid">
+                            <!-- Populated by JavaScript -->
+                        </div>
                     </div>
 
-                    <!-- Market Summary Cards -->
-                    <div class="market-summary-grid">
-                        <div class="summary-card">
-                            <i class="fas fa-home"></i>
-                            <h4>Total Active Listings</h4>
-                            <div class="summary-value">332</div>
-                            <div class="summary-change positive">+28 from last month</div>
+                    <!-- Premium Market Insights -->
+                    <div class="insights-container">
+                        <div class="insights-header">
+                            <h4 class="insights-title">Market Intelligence Dashboard</h4>
+                            <div class="live-indicator">
+                                <span class="pulse"></span>
+                                <span>Live Data</span>
+                            </div>
                         </div>
-                        <div class="summary-card">
-                            <i class="fas fa-handshake"></i>
-                            <h4>Total Properties Sold</h4>
-                            <div class="summary-value">635</div>
-                            <div class="summary-change positive">+45 from last month</div>
-                        </div>
-                        <div class="summary-card">
-                            <i class="fas fa-percentage"></i>
-                            <h4>Average Sold Ratio</h4>
-                            <div class="summary-value">65.6%</div>
-                            <div class="summary-change">Balanced Market</div>
-                        </div>
-                        <div class="summary-card">
-                            <i class="fas fa-trophy"></i>
-                            <h4>Top Performer</h4>
-                            <div class="summary-value">Delaire</div>
-                            <div class="summary-change">85% Sold Ratio</div>
+                        <div class="insights-grid">
+                            <div class="insight-card elevated">
+                                <div class="card-shimmer"></div>
+                                <div class="card-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h5>Active Inventory</h5>
+                                    <div class="card-value" data-value="332">0</div>
+                                    <div class="card-trend up">
+                                        <i class="fas fa-arrow-trend-up"></i>
+                                        +8.4% MoM
+                                    </div>
+                                </div>
+                                <div class="card-chart">
+                                    <canvas id="mini-chart-active"></canvas>
+                                </div>
+                            </div>
+                            <div class="insight-card elevated">
+                                <div class="card-shimmer"></div>
+                                <div class="card-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h5>Closed Deals</h5>
+                                    <div class="card-value" data-value="635">0</div>
+                                    <div class="card-trend up">
+                                        <i class="fas fa-arrow-trend-up"></i>
+                                        +7.1% MoM
+                                    </div>
+                                </div>
+                                <div class="card-chart">
+                                    <canvas id="mini-chart-sold"></canvas>
+                                </div>
+                            </div>
+                            <div class="insight-card elevated">
+                                <div class="card-shimmer"></div>
+                                <div class="card-icon">
+                                    <i class="fas fa-fire-flame-curved"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h5>Market Velocity</h5>
+                                    <div class="card-value">65.6%</div>
+                                    <div class="card-trend">
+                                        <i class="fas fa-equals"></i>
+                                        Balanced
+                                    </div>
+                                </div>
+                                <div class="card-gauge">
+                                    <div class="gauge-fill" style="width: 65.6%"></div>
+                                </div>
+                            </div>
+                            <div class="insight-card elevated featured">
+                                <div class="card-shimmer"></div>
+                                <div class="card-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h5>Top Performer</h5>
+                                    <div class="card-value">Delaire</div>
+                                    <div class="card-trend gold">
+                                        <i class="fas fa-medal"></i>
+                                        85% Ratio
+                                    </div>
+                                </div>
+                                <div class="performance-bars">
+                                    <div class="perf-bar" style="height: 85%"></div>
+                                    <div class="perf-bar" style="height: 79%"></div>
+                                    <div class="perf-bar" style="height: 76%"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
