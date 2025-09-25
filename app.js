@@ -510,15 +510,21 @@ function getCommunityInfo(communityName) {
     },
     'royal-palm': {
       name: 'Royal Palm Yacht & CC',
-      median: '$14M',
+      median: '$7.5M',
       listings: '8',
       trend: 'Ultra Luxury'
     },
     'sanctuary': {
       name: 'The Sanctuary',
-      median: '$15M',
+      median: '$6.2M',
       listings: '5',
       trend: 'Exclusive'
+    },
+    'delray': {
+      name: 'Delray Beach',
+      median: '$2.8M',
+      listings: '12',
+      trend: 'Growing Market'
     }
   };
 
