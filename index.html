@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edmund Bogen Real Estate Report - Luxury Market Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <div class="dashboard-container">
+        <!-- Header Section with Animation -->
+        <header class="dashboard-header">
+            <div class="header-particles"></div>
+            <div class="container">
+                <div class="header-content">
+                    <!-- Author Section -->
+                    <div class="author-section">
+                        <div class="author-image-wrapper">
+                            <img src="edmund-bogen.jpg" alt="Edmund Bogen" class="author-image">
+                            <div class="author-image-glow"></div>
+                        </div>
+                        <div class="author-info">
+                            <h2 class="author-name">Edmund Bogen</h2>
+                            <p class="author-title">Luxury Real Estate Specialist</p>
+                            <div class="author-badges">
+                                <span class="badge"><i class="fas fa-award"></i> Top Producer</span>
+                                <span class="badge"><i class="fas fa-chart-line"></i> Market Expert</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h1 class="header-title animated-title">
+                        <span class="title-line">Edmund Bogen</span>
+                        <span class="title-line gradient-text">Real Estate Report</span>
+                    </h1>
+                    <p class="report-subtitle">Exclusive Luxury Market Analysis</p>
+                    <div class="header-info">
+                        <span class="location-badge">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Boca Raton & Delray Beach
+                        </span>
+                        <span class="season-badge">
+                            <i class="fas fa-calendar"></i>
+                            Fall 2024-2025 Season
+                        </span>
+                    </div>
+                    <p class="header-description">
+                        Interactive insights for luxury properties $1M+ featuring St. Andrews Country Club
+                    </p>
+
+                    <!-- Live Market Ticker -->
+                    <div class="market-ticker">
+                        <div class="ticker-content">
+                            <span class="ticker-item">
+                                <i class="fas fa-home"></i> Single Family: $2.10M (+9%)
+                            </span>
+                            <span class="ticker-item">
+                                <i class="fas fa-building"></i> Luxury Condos: $735K (-11%)
+                            </span>
+                            <span class="ticker-item">
+                                <i class="fas fa-golf-ball"></i> St Andrews: $3.7M Median
+                            </span>
+                            <span class="ticker-item">
+                                <i class="fas fa-chart-line"></i> Days on Market: 43 Days
+                            </span>
+                            <span class="ticker-item">
+                                <i class="fas fa-dollar-sign"></i> Total Inventory: $83.3M
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Enhanced Navigation Tabs -->
+        <nav class="tab-navigation">
+            <div class="container">
+                <div class="tab-wrapper">
+                    <div class="tab-indicator"></div>
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="market-overview">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Overview</span>
+                        </button>
+                        <button class="tab-btn" data-tab="st-andrews">
+                            <i class="fas fa-golf-ball"></i>
+                            <span>St. Andrews</span>
+                        </button>
+                        <button class="tab-btn" data-tab="boca-raton">
+                            <i class="fas fa-city"></i>
+                            <span>Boca Raton</span>
+                        </button>
+                        <button class="tab-btn" data-tab="delray-beach">
+                            <i class="fas fa-umbrella-beach"></i>
+                            <span>Delray Beach</span>
+                        </button>
+                        <button class="tab-btn" data-tab="price-segments">
+                            <i class="fas fa-tags"></i>
+                            <span>Price Analysis</span>
+                        </button>
+                        <button class="tab-btn" data-tab="interactive-map">
+                            <i class="fas fa-map"></i>
+                            <span>Map View</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-content">
+            <div class="container">
+
+                <!-- Market Overview Tab -->
+                <section id="market-overview" class="tab-content active">
+                    <div class="section-header animated-header">
+                        <h3>
+                            <span class="section-icon"><i class="fas fa-chart-line"></i></span>
+                            Market Overview Dashboard
+                        </h3>
+                        <p class="section-description">Real-time luxury market performance metrics</p>
+                    </div>
+
+                    <!-- Interactive Metrics Grid -->
+                    <div class="metrics-grid">
+                        <div class="metric-card interactive-card" data-metric="single-family">
+                            <div class="card-glow"></div>
+                            <div class="metric-icon-wrapper">
+                                <div class="icon-pulse"></div>
+                                <i class="fas fa-home metric-icon"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h4>Single-Family Homes</h4>
+                                <div class="metric-value" data-value="2100000">$0</div>
+                                <div class="metric-label">Median Price</div>
+                                <div class="metric-chart">
+                                    <canvas id="sparkline-sf"></canvas>
+                                </div>
+                                <div class="change-indicator positive">
+                                    <i class="fas fa-arrow-up"></i> +9% YoY
+                                </div>
+                            </div>
+                            <div class="card-hover-info">
+                                <p>570 Active Listings</p>
+                                <p>68 Closed Sales</p>
+                                <p>$614 per Sq.Ft</p>
+                            </div>
+                        </div>
+
+                        <div class="metric-card interactive-card" data-metric="condos">
+                            <div class="card-glow"></div>
+                            <div class="metric-icon-wrapper">
+                                <div class="icon-pulse"></div>
+                                <i class="fas fa-building metric-icon"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h4>Luxury Condos</h4>
+                                <div class="metric-value" data-value="735000">$0</div>
+                                <div class="metric-label">Median Price</div>
+                                <div class="metric-chart">
+                                    <canvas id="sparkline-condo"></canvas>
+                                </div>
+                                <div class="change-indicator negative">
+                                    <i class="fas fa-arrow-down"></i> -11% YoY
+                                </div>
+                            </div>
+                            <div class="card-hover-info">
+                                <p>550 Active Listings</p>
+                                <p>50 Closed Sales</p>
+                                <p>98 Days on Market</p>
+                            </div>
+                        </div>
+
+                        <div class="metric-card interactive-card premium" data-metric="st-andrews">
+                            <div class="card-glow"></div>
+                            <div class="premium-badge">
+                                <i class="fas fa-star"></i>
+                                Premium
+                            </div>
+                            <div class="metric-icon-wrapper">
+                                <div class="icon-pulse"></div>
+                                <i class="fas fa-golf-ball metric-icon"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h4>St Andrews Country Club</h4>
+                                <div class="metric-value" data-value="3700000">$0</div>
+                                <div class="metric-label">Median Price • 15 Active</div>
+                                <div class="metric-chart">
+                                    <canvas id="sparkline-st-andrews"></canvas>
+                                </div>
+                                <div class="change-indicator premium">
+                                    <i class="fas fa-trophy"></i> $83.3M Total
+                                </div>
+                            </div>
+                            <div class="card-hover-info">
+                                <p>100% Pool Properties</p>
+                                <p>60% Waterfront</p>
+                                <p>$938 per Sq.Ft</p>
+                            </div>
+                        </div>
+
+                        <div class="metric-card interactive-card" data-metric="market-health">
+                            <div class="card-glow"></div>
+                            <div class="metric-icon-wrapper">
+                                <div class="icon-pulse"></div>
+                                <i class="fas fa-heartbeat metric-icon"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h4>Market Health</h4>
+                                <div class="market-health-gauge">
+                                    <svg viewBox="0 0 200 100" class="gauge">
+                                        <path d="M 10 90 A 80 80 0 0 1 190 90" fill="none" stroke="#e0e0e0" stroke-width="20"/>
+                                        <path d="M 10 90 A 80 80 0 0 1 190 90" fill="none" stroke="url(#gradient)" stroke-width="20"
+                                              stroke-dasharray="251" stroke-dashoffset="100" class="gauge-fill"/>
+                                        <defs>
+                                            <linearGradient id="gradient">
+                                                <stop offset="0%" stop-color="#22c55e"/>
+                                                <stop offset="50%" stop-color="#eab308"/>
+                                                <stop offset="100%" stop-color="#ef4444"/>
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                    <div class="gauge-value">72%</div>
+                                </div>
+                                <div class="metric-label">Balanced Market</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Charts Section -->
+                    <div class="charts-section">
+                        <div class="chart-container">
+                            <h4 class="chart-title">
+                                <i class="fas fa-chart-bar"></i>
+                                Price Trends by Property Type
+                            </h4>
+                            <div class="chart-wrapper">
+                                <canvas id="price-trends-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <h4 class="chart-title">
+                                <i class="fas fa-globe-americas"></i>
+                                International Buyer Distribution
+                            </h4>
+                            <div class="chart-wrapper">
+                                <canvas id="intl-buyers-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Market Activity Feed -->
+                    <div class="activity-feed">
+                        <h4 class="feed-title">
+                            <i class="fas fa-pulse"></i>
+                            Live Market Activity
+                        </h4>
+                        <div class="feed-items">
+                            <div class="feed-item new">
+                                <div class="feed-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="feed-content">
+                                    <span class="feed-text">New listing in Royal Palm</span>
+                                    <span class="feed-price">$14.5M</span>
+                                    <span class="feed-time">2 min ago</span>
+                                </div>
+                            </div>
+                            <div class="feed-item sold">
+                                <div class="feed-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="feed-content">
+                                    <span class="feed-text">Property sold at St Andrews</span>
+                                    <span class="feed-price">$5.2M</span>
+                                    <span class="feed-time">1 hour ago</span>
+                                </div>
+                            </div>
+                            <div class="feed-item price-change">
+                                <div class="feed-icon">
+                                    <i class="fas fa-tag"></i>
+                                </div>
+                                <div class="feed-content">
+                                    <span class="feed-text">Price reduction in Sanctuary</span>
+                                    <span class="feed-price">Now $8.9M</span>
+                                    <span class="feed-time">3 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- St Andrews Tab -->
+                <section id="st-andrews" class="tab-content">
+                    <div class="section-header animated-header">
+                        <h3>
+                            <span class="section-icon"><i class="fas fa-golf-ball"></i></span>
+                            St. Andrews Country Club Analysis
+                        </h3>
+                        <p class="section-description">Exclusive insights into one of Boca Raton's most prestigious communities</p>
+                    </div>
+
+                    <!-- St Andrews Stats Grid -->
+                    <div class="st-andrews-stats">
+                        <div class="stat-card luxury">
+                            <div class="stat-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">15</div>
+                                <div class="stat-label">Active Listings</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card luxury">
+                            <div class="stat-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">$83.3M</div>
+                                <div class="stat-label">Total Inventory</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card luxury">
+                            <div class="stat-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">$3.7M</div>
+                                <div class="stat-label">Median Price</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card luxury">
+                            <div class="stat-icon">
+                                <i class="fas fa-ruler-combined"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">$938</div>
+                                <div class="stat-label">Per Sq.Ft</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price Distribution Chart -->
+                    <div class="price-distribution">
+                        <h4>Price Distribution at St. Andrews</h4>
+                        <div class="distribution-bars">
+                            <div class="dist-bar" data-count="8">
+                                <div class="bar-fill" style="height: 60%">
+                                    <span class="bar-value">8</span>
+                                </div>
+                                <span class="bar-label">$2.5M-$5M</span>
+                            </div>
+                            <div class="dist-bar" data-count="6">
+                                <div class="bar-fill" style="height: 45%">
+                                    <span class="bar-value">6</span>
+                                </div>
+                                <span class="bar-label">$5M-$10M</span>
+                            </div>
+                            <div class="dist-bar" data-count="1">
+                                <div class="bar-fill" style="height: 10%">
+                                    <span class="bar-value">1</span>
+                                </div>
+                                <span class="bar-label">$10M+</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature Highlights -->
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon waterfront">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <h5>60% Waterfront</h5>
+                            <p>Premium waterfront properties with stunning views</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon pool">
+                                <i class="fas fa-swimming-pool"></i>
+                            </div>
+                            <h5>100% Pool Access</h5>
+                            <p>Every property features luxury pool amenities</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon new">
+                                <i class="fas fa-hammer"></i>
+                            </div>
+                            <h5>2 New Construction</h5>
+                            <p>Brand new luxury estates under development</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon golf">
+                                <i class="fas fa-flag"></i>
+                            </div>
+                            <h5>Championship Golf</h5>
+                            <p>Access to world-class golf facilities</p>
+                        </div>
+                    </div>
+
+                    <!-- Top Listing Showcase -->
+                    <div class="top-listing">
+                        <h4>Featured Property</h4>
+                        <div class="listing-card premium">
+                            <div class="listing-badge">Top Listing</div>
+                            <div class="listing-details">
+                                <h5>17903 Foxborough Lane</h5>
+                                <div class="listing-stats">
+                                    <span><i class="fas fa-dollar-sign"></i> $10.5M</span>
+                                    <span><i class="fas fa-ruler"></i> 7,616 Sq.Ft</span>
+                                    <span><i class="fas fa-calendar"></i> 142 Days</span>
+                                </div>
+                                <div class="listing-features">
+                                    <span class="feature-tag">Waterfront</span>
+                                    <span class="feature-tag">Pool</span>
+                                    <span class="feature-tag">Golf View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Interactive Map Tab -->
+                <section id="interactive-map" class="tab-content">
+                    <div class="section-header animated-header">
+                        <h3>
+                            <span class="section-icon"><i class="fas fa-map-marked-alt"></i></span>
+                            Interactive Property Map
+                        </h3>
+                        <p class="section-description">Explore luxury properties across Boca Raton and Delray Beach</p>
+                    </div>
+
+                    <div class="map-container">
+                        <div class="map-controls">
+                            <button class="map-btn active" data-filter="all">All Properties</button>
+                            <button class="map-btn" data-filter="waterfront">Waterfront</button>
+                            <button class="map-btn" data-filter="golf">Golf Course</button>
+                            <button class="map-btn" data-filter="new">New Construction</button>
+                        </div>
+
+                        <div class="interactive-map">
+                            <svg viewBox="0 0 800 600" class="map-svg">
+                                <!-- Map Background -->
+                                <rect width="800" height="600" fill="url(#mapGradient)"/>
+
+                                <defs>
+                                    <linearGradient id="mapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#e0f2fe;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#bae6fd;stop-opacity:1" />
+                                    </linearGradient>
+
+                                    <filter id="glow">
+                                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                        <feMerge>
+                                            <feMergeNode in="coloredBlur"/>
+                                            <feMergeNode in="SourceGraphic"/>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+
+                                <!-- Communities -->
+                                <g class="communities">
+                                    <!-- St Andrews -->
+                                    <g class="community st-andrews" data-community="st-andrews">
+                                        <circle cx="400" cy="200" r="60" fill="#10b981" fill-opacity="0.3" stroke="#10b981" stroke-width="2"/>
+                                        <text x="400" y="205" text-anchor="middle" fill="#065f46" font-weight="bold">St. Andrews</text>
+                                        <circle cx="380" cy="190" r="5" fill="#ef4444" class="property-marker" filter="url(#glow)"/>
+                                        <circle cx="420" cy="210" r="5" fill="#ef4444" class="property-marker" filter="url(#glow)"/>
+                                        <circle cx="400" cy="230" r="5" fill="#ef4444" class="property-marker" filter="url(#glow)"/>
+                                    </g>
+
+                                    <!-- Royal Palm -->
+                                    <g class="community royal-palm" data-community="royal-palm">
+                                        <circle cx="250" cy="350" r="50" fill="#8b5cf6" fill-opacity="0.3" stroke="#8b5cf6" stroke-width="2"/>
+                                        <text x="250" y="355" text-anchor="middle" fill="#4c1d95" font-weight="bold">Royal Palm</text>
+                                        <circle cx="240" cy="340" r="5" fill="#fbbf24" class="property-marker" filter="url(#glow)"/>
+                                        <circle cx="260" cy="360" r="5" fill="#fbbf24" class="property-marker" filter="url(#glow)"/>
+                                    </g>
+
+                                    <!-- Sanctuary -->
+                                    <g class="community sanctuary" data-community="sanctuary">
+                                        <circle cx="550" cy="400" r="55" fill="#3b82f6" fill-opacity="0.3" stroke="#3b82f6" stroke-width="2"/>
+                                        <text x="550" y="405" text-anchor="middle" fill="#1e3a8a" font-weight="bold">Sanctuary</text>
+                                        <circle cx="530" cy="395" r="5" fill="#ec4899" class="property-marker" filter="url(#glow)"/>
+                                        <circle cx="570" cy="405" r="5" fill="#ec4899" class="property-marker" filter="url(#glow)"/>
+                                        <circle cx="550" cy="420" r="5" fill="#ec4899" class="property-marker" filter="url(#glow)"/>
+                                    </g>
+                                </g>
+
+                                <!-- Legend -->
+                                <g class="map-legend" transform="translate(20, 20)">
+                                    <rect width="150" height="120" fill="white" fill-opacity="0.9" rx="5"/>
+                                    <text x="10" y="20" font-weight="bold" fill="#333">Legend</text>
+                                    <circle cx="20" cy="40" r="5" fill="#ef4444"/>
+                                    <text x="35" y="45" fill="#666" font-size="12">$2.5M - $5M</text>
+                                    <circle cx="20" cy="60" r="5" fill="#fbbf24"/>
+                                    <text x="35" y="65" fill="#666" font-size="12">$5M - $10M</text>
+                                    <circle cx="20" cy="80" r="5" fill="#ec4899"/>
+                                    <text x="35" y="85" fill="#666" font-size="12">$10M+</text>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <div class="map-info-panel">
+                            <h5>Click on communities for details</h5>
+                            <div id="community-info"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Boca Raton Analysis Tab -->
+                <section id="boca-raton" class="tab-content">
+                    <div class="section-header animated-header">
+                        <h3>
+                            <span class="section-icon"><i class="fas fa-city"></i></span>
+                            Boca Raton Market Analysis
+                        </h3>
+                        <p class="section-description">Comprehensive analysis of Boca Raton's luxury real estate market</p>
+                    </div>
+
+                    <!-- Boca Raton Overview Cards -->
+                    <div class="market-overview-grid">
+                        <div class="overview-card gradient-card">
+                            <div class="card-header">
+                                <i class="fas fa-home"></i>
+                                <h4>Single Family Homes</h4>
+                            </div>
+                            <div class="card-stats">
+                                <div class="stat-row">
+                                    <span class="stat-label">Median Price:</span>
+                                    <span class="stat-value highlight">$2.10M</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">YoY Change:</span>
+                                    <span class="stat-value positive">+9%</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Inventory:</span>
+                                    <span class="stat-value">570 homes</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Days on Market:</span>
+                                    <span class="stat-value">43 days</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Price per Sq.Ft:</span>
+                                    <span class="stat-value">$614</span>
+                                </div>
+                            </div>
+                            <div class="market-indicator balanced">
+                                <i class="fas fa-balance-scale"></i> Balanced Market
+                            </div>
+                        </div>
+
+                        <div class="overview-card gradient-card">
+                            <div class="card-header">
+                                <i class="fas fa-building"></i>
+                                <h4>Luxury Condominiums</h4>
+                            </div>
+                            <div class="card-stats">
+                                <div class="stat-row">
+                                    <span class="stat-label">Median Price:</span>
+                                    <span class="stat-value highlight">$735K</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">YoY Change:</span>
+                                    <span class="stat-value negative">-11%</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Inventory:</span>
+                                    <span class="stat-value">550 units</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Days on Market:</span>
+                                    <span class="stat-value">98 days</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Sale/List Ratio:</span>
+                                    <span class="stat-value">95.28%</span>
+                                </div>
+                            </div>
+                            <div class="market-indicator buyers">
+                                <i class="fas fa-shopping-cart"></i> Buyer's Market
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Boca Raton Trends Chart -->
+                    <div class="chart-section-full">
+                        <h4 class="chart-title">
+                            <i class="fas fa-chart-line"></i>
+                            12-Month Price Trends - Boca Raton
+                        </h4>
+                        <div class="chart-wrapper-large">
+                            <canvas id="boca-trends-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Neighborhood Breakdown -->
+                    <div class="neighborhood-grid">
+                        <h4 class="section-subtitle">Top Neighborhoods</h4>
+                        <div class="neighborhood-cards">
+                            <div class="neighborhood-card">
+                                <div class="neighborhood-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <h5>Royal Palm Yacht & CC</h5>
+                                <div class="neighborhood-price">$8M - $20M</div>
+                                <div class="neighborhood-features">
+                                    <span class="feature-badge">Waterfront</span>
+                                    <span class="feature-badge">Golf</span>
+                                </div>
+                            </div>
+                            <div class="neighborhood-card">
+                                <div class="neighborhood-icon">
+                                    <i class="fas fa-anchor"></i>
+                                </div>
+                                <h5>The Sanctuary</h5>
+                                <div class="neighborhood-price">$2M - $29M</div>
+                                <div class="neighborhood-features">
+                                    <span class="feature-badge">Intracoastal</span>
+                                    <span class="feature-badge">Deep Water</span>
+                                </div>
+                            </div>
+                            <div class="neighborhood-card">
+                                <div class="neighborhood-icon">
+                                    <i class="fas fa-golf-ball"></i>
+                                </div>
+                                <h5>St. Andrews CC</h5>
+                                <div class="neighborhood-price">$2.5M - $10.5M</div>
+                                <div class="neighborhood-features">
+                                    <span class="feature-badge">Golf Course</span>
+                                    <span class="feature-badge">Gated</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Delray Beach Analysis Tab -->
+                <section id="delray-beach" class="tab-content">
+                    <div class="section-header animated-header">
+                        <h3>
+                            <span class="section-icon"><i class="fas fa-umbrella-beach"></i></span>
+                            Delray Beach Market Analysis
+                        </h3>
+                        <p class="section-description">Beachside luxury market trends and insights</p>
+                    </div>
+
+                    <!-- Delray Beach Stats -->
+                    <div class="delray-stats-grid">
+                        <div class="delray-stat-card">
+                            <div class="stat-icon-large">
+                                <i class="fas fa-chart-area"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-title">Months Supply</div>
+                                <div class="stat-main">8.23</div>
+                                <div class="stat-comparison">
+                                    <span class="previous">Previous: 10.34</span>
+                                    <span class="change-badge improvement">↓ 20.4%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="delray-stat-card">
+                            <div class="stat-icon-large">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-title">Median Price Change</div>
+                                <div class="stat-main">+11.4%</div>
+                                <div class="stat-comparison">
+                                    <span class="trend-indicator positive">Strong Growth</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="delray-stat-card">
+                            <div class="stat-icon-large">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-title">Sold to List Ratio</div>
+                                <div class="stat-main">99.9%</div>
+                                <div class="stat-comparison">
+                                    <span class="previous">May: 89.9%</span>
+                                    <span class="change-badge improvement">↑ 10%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="delray-stat-card">
+                            <div class="stat-icon-large">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-title">Homes Sold Change</div>
+                                <div class="stat-main">-10.4%</div>
+                                <div class="stat-comparison">
+                                    <span class="trend-indicator neutral">Normalizing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delray Beach Highlights -->
+                    <div class="highlights-section">
+                        <h4 class="section-subtitle">Market Highlights</h4>
+                        <div class="highlights-grid">
+                            <div class="highlight-box">
+                                <div class="highlight-header beachfront">
+                                    <i class="fas fa-water"></i>
+                                    <h5>Beachfront Properties</h5>
+                                </div>
+                                <p>Premium beachfront estates commanding 25% price premiums with average days on market of just 35 days.</p>
+                            </div>
+                            <div class="highlight-box">
+                                <div class="highlight-header downtown">
+                                    <i class="fas fa-city"></i>
+                                    <h5>Downtown District</h5>
+                                </div>
+                                <p>Atlantic Avenue corridor seeing increased demand with new luxury developments and walkable lifestyle amenities.</p>
+                            </div>
+                            <div class="highlight-box">
+                                <div class="highlight-header investment">
+                                    <i class="fas fa-chart-line"></i>
+                                    <h5>Investment Outlook</h5>
+                                </div>
+                                <p>Strong rental market with seasonal rates up 15% YoY, making investment properties increasingly attractive.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparative Analysis -->
+                    <div class="comparison-chart">
+                        <h4 class="chart-title">
+                            <i class="fas fa-balance-scale"></i>
+                            Delray Beach vs Boca Raton Performance
+                        </h4>
+                        <div class="chart-wrapper-medium">
+                            <canvas id="comparison-chart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Price Segments Tab -->
+                <section id="price-segments" class="tab-content">
+                    <div class="section-header animated-header">
+                        <h3>
+                            <span class="section-icon"><i class="fas fa-tags"></i></span>
+                            Price Segment Analysis
+                        </h3>
+                        <p class="section-description">Market performance across luxury price tiers</p>
+                    </div>
+
+                    <!-- Price Tier Cards -->
+                    <div class="price-tiers">
+                        <div class="tier-card tier-entry">
+                            <div class="tier-header">
+                                <h4>Entry Luxury</h4>
+                                <div class="tier-range">$1M - $2.5M</div>
+                            </div>
+                            <div class="tier-metrics">
+                                <div class="tier-stat">
+                                    <span class="label">Volume</span>
+                                    <span class="value">45%</span>
+                                </div>
+                                <div class="tier-stat">
+                                    <span class="label">Inventory</span>
+                                    <span class="value">320 homes</span>
+                                </div>
+                                <div class="tier-stat">
+                                    <span class="label">DOM</span>
+                                    <span class="value">52 days</span>
+                                </div>
+                            </div>
+                            <div class="tier-chart">
+                                <canvas id="tier-entry-chart"></canvas>
+                            </div>
+                            <div class="tier-insights">
+                                <h5>Key Insights</h5>
+                                <ul>
+                                    <li>Most active segment with highest transaction volume</li>
+                                    <li>Strong competition from cash buyers (68%)</li>
+                                    <li>Preferred by downsizers and first-time luxury buyers</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tier-card tier-mid">
+                            <div class="tier-header">
+                                <h4>Mid Luxury</h4>
+                                <div class="tier-range">$2.5M - $5M</div>
+                            </div>
+                            <div class="tier-metrics">
+                                <div class="tier-stat">
+                                    <span class="label">Volume</span>
+                                    <span class="value">30%</span>
+                                </div>
+                                <div class="tier-stat">
+                                    <span class="label">Inventory</span>
+                                    <span class="value">185 homes</span>
+                                </div>
+                                <div class="tier-stat">
+                                    <span class="label">DOM</span>
+                                    <span class="value">68 days</span>
+                                </div>
+                            </div>
+                            <div class="tier-chart">
+                                <canvas id="tier-mid-chart"></canvas>
+                            </div>
+                            <div class="tier-insights">
+                                <h5>Key Insights</h5>
+                                <ul>
+                                    <li>Sweet spot for move-up buyers</li>
+                                    <li>Waterfront properties dominate this segment</li>
+                                    <li>Average 4,200 sq ft with premium amenities</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tier-card tier-high">
+                            <div class="tier-header">
+                                <h4>High Luxury</h4>
+                                <div class="tier-range">$5M - $10M</div>
+                            </div>
+                            <div class="tier-metrics">
+                                <div class="tier-stat">
+                                    <span class="label">Volume</span>
+                                    <span class="value">20%</span>
+                                </div>
+                                <div class="tier-stat">
+                                    <span class="label">Inventory</span>
+                                    <span class="value">78 homes</span>
+                                </div>
+                                <div class="tier-stat">
+                                    <span class="label">DOM</span>
+                                    <span class="value">95 days</span>
+                                </div>
+                            </div>
+                            <div class="tier-chart">
+                                <canvas id="tier-high-chart"></canvas>
+                            </div>
+                            <div class="tier-insights">
+                                <h5>Key Insights</h5>
+                                <ul>
+                                    <li>Estate properties with 1+ acre lots</li>
+                                    <li>International buyers represent 40% of purchases</li>
+                                    <li>Custom homes and new construction prevalent</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tier-card tier-ultra">
+                            <div class="tier-header">
+                                <h4>Ultra Luxury</h4>
+                                <div class="tier-range">$10M+</div>
+                            </div>
+                            <div class="tier-metrics">
+                                <div class="tier-stat">
+                                    <span class="label">Volume</span>
+                                    <span class="value">5%</span>
+                                </div>
+                                <div class="tier-stat">
+                                    <span class="label">Inventory</span>
+                                    <span class="value">22 homes</span>
+                                </div>
+                                <div class="tier-stat">
+                                    <span class="label">DOM</span>
+                                    <span class="value">142 days</span>
+                                </div>
+                            </div>
+                            <div class="tier-chart">
+                                <canvas id="tier-ultra-chart"></canvas>
+                            </div>
+                            <div class="tier-insights">
+                                <h5>Key Insights</h5>
+                                <ul>
+                                    <li>Trophy properties with ocean/Intracoastal frontage</li>
+                                    <li>Off-market deals represent 60% of transactions</li>
+                                    <li>Average property size exceeds 10,000 sq ft</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price Performance Matrix -->
+                    <div class="performance-matrix">
+                        <h4 class="section-subtitle">Performance by Price Segment</h4>
+                        <div class="matrix-chart">
+                            <canvas id="price-matrix-chart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Enhanced Interactive Map Tab -->
+                <section id="interactive-map" class="tab-content">
+                    <div class="section-header animated-header">
+                        <h3>
+                            <span class="section-icon"><i class="fas fa-map-marked-alt"></i></span>
+                            Interactive Property Map
+                        </h3>
+                        <p class="section-description">Explore luxury properties across Boca Raton and Delray Beach</p>
+                    </div>
+
+                    <div class="map-container-enhanced">
+                        <div class="map-controls">
+                            <button class="map-btn active" data-filter="all">All Properties</button>
+                            <button class="map-btn" data-filter="waterfront">Waterfront</button>
+                            <button class="map-btn" data-filter="golf">Golf Course</button>
+                            <button class="map-btn" data-filter="new">New Construction</button>
+                        </div>
+
+                        <div class="map-wrapper">
+                            <div class="interactive-map-new">
+                                <!-- Using a styled div-based map instead of SVG -->
+                                <div class="map-area">
+                                    <!-- Ocean/Beach Area -->
+                                    <div class="ocean-area">
+                                        <div class="wave"></div>
+                                        <div class="wave"></div>
+                                        <div class="wave"></div>
+                                    </div>
+
+                                    <!-- Communities positioned on map -->
+                                    <div class="map-community st-andrews-community" style="top: 25%; left: 45%;">
+                                        <div class="community-marker">
+                                            <i class="fas fa-golf-ball"></i>
+                                        </div>
+                                        <div class="community-label">St. Andrews CC</div>
+                                        <div class="community-popup">
+                                            <h5>St. Andrews Country Club</h5>
+                                            <p>15 Active Listings</p>
+                                            <p>Median: $3.7M</p>
+                                            <p>$83.3M Total Inventory</p>
+                                        </div>
+                                        <div class="property-dots">
+                                            <span class="dot luxury"></span>
+                                            <span class="dot high"></span>
+                                            <span class="dot mid"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="map-community royal-palm-community" style="top: 50%; left: 30%;">
+                                        <div class="community-marker">
+                                            <i class="fas fa-crown"></i>
+                                        </div>
+                                        <div class="community-label">Royal Palm</div>
+                                        <div class="community-popup">
+                                            <h5>Royal Palm Yacht & CC</h5>
+                                            <p>8 Active Listings</p>
+                                            <p>Median: $14M</p>
+                                            <p>Ultra-luxury waterfront</p>
+                                        </div>
+                                        <div class="property-dots">
+                                            <span class="dot ultra"></span>
+                                            <span class="dot ultra"></span>
+                                            <span class="dot luxury"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="map-community sanctuary-community" style="top: 60%; left: 65%;">
+                                        <div class="community-marker">
+                                            <i class="fas fa-anchor"></i>
+                                        </div>
+                                        <div class="community-label">The Sanctuary</div>
+                                        <div class="community-popup">
+                                            <h5>The Sanctuary</h5>
+                                            <p>5 Active Listings</p>
+                                            <p>Median: $15M</p>
+                                            <p>Exclusive waterfront enclave</p>
+                                        </div>
+                                        <div class="property-dots">
+                                            <span class="dot ultra"></span>
+                                            <span class="dot ultra"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="map-community delray-beach-area" style="top: 75%; left: 50%;">
+                                        <div class="community-marker beach">
+                                            <i class="fas fa-umbrella-beach"></i>
+                                        </div>
+                                        <div class="community-label">Delray Beach</div>
+                                        <div class="community-popup">
+                                            <h5>Delray Beach</h5>
+                                            <p>Beachfront Properties</p>
+                                            <p>Atlantic Avenue District</p>
+                                            <p>+11.4% YoY Growth</p>
+                                        </div>
+                                        <div class="property-dots">
+                                            <span class="dot mid"></span>
+                                            <span class="dot high"></span>
+                                            <span class="dot mid"></span>
+                                            <span class="dot luxury"></span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Intracoastal Waterway -->
+                                    <div class="waterway"></div>
+
+                                    <!-- Roads/Highways -->
+                                    <div class="highway a1a">A1A</div>
+                                    <div class="highway us1">US-1</div>
+                                    <div class="highway i95">I-95</div>
+                                </div>
+
+                                <!-- Map Legend -->
+                                <div class="map-legend-new">
+                                    <h5>Property Values</h5>
+                                    <div class="legend-items">
+                                        <div class="legend-item">
+                                            <span class="dot mid"></span>
+                                            $1M - $2.5M
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="dot high"></span>
+                                            $2.5M - $5M
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="dot luxury"></span>
+                                            $5M - $10M
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="dot ultra"></span>
+                                            $10M+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Map Stats Panel -->
+                            <div class="map-stats-panel">
+                                <h5>Map Statistics</h5>
+                                <div class="map-stat">
+                                    <span class="stat-label">Total Properties:</span>
+                                    <span class="stat-value">48</span>
+                                </div>
+                                <div class="map-stat">
+                                    <span class="stat-label">Total Value:</span>
+                                    <span class="stat-value">$286M</span>
+                                </div>
+                                <div class="map-stat">
+                                    <span class="stat-label">Avg. Price:</span>
+                                    <span class="stat-value">$5.9M</span>
+                                </div>
+                                <div class="map-stat">
+                                    <span class="stat-label">Waterfront:</span>
+                                    <span class="stat-value">65%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- Footer with Live Stats -->
+        <footer class="dashboard-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-stats">
+                        <span class="live-indicator">
+                            <span class="pulse"></span>
+                            LIVE DATA
+                        </span>
+                        <span>Last Updated: <span id="last-update">Just now</span></span>
+                        <span class="footer-author">
+                            <i class="fas fa-copyright"></i>
+                            2024 Edmund Bogen Real Estate Report
+                        </span>
+                    </div>
+                    <div class="footer-actions">
+                        <button class="btn-export">
+                            <i class="fas fa-download"></i>
+                            Export Report
+                        </button>
+                        <button class="btn-share">
+                            <i class="fas fa-share-alt"></i>
+                            Share
+                        </button>
+                        <button class="btn-contact">
+                            <i class="fas fa-phone"></i>
+                            Contact Edmund
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="fab-container">
+        <button class="fab main-fab">
+            <i class="fas fa-plus"></i>
+        </button>
+        <div class="fab-menu">
+            <button class="fab-option" data-action="compare">
+                <i class="fas fa-balance-scale"></i>
+                <span class="fab-label">Compare</span>
+            </button>
+            <button class="fab-option" data-action="filter">
+                <i class="fas fa-filter"></i>
+                <span class="fab-label">Filter</span>
+            </button>
+            <button class="fab-option" data-action="refresh">
+                <i class="fas fa-sync"></i>
+                <span class="fab-label">Refresh</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Buttons</title>
+</head>
+<body>
+    <h1>Testing Edmund Bogen Real Estate Report</h1>
+
+    <h2>Test These Features:</h2>
+
+    <p>1. Open the main report: <a href="index.html" target="_blank">Open Report</a></p>
+
+    <p>2. Click on the "Interactive Map" tab (with map icon)</p>
+
+    <p>3. Once on the map, test these filter buttons:</p>
+    <ul>
+        <li>All Properties - Should show all communities</li>
+        <li>Waterfront - Should highlight waterfront properties with blue glow</li>
+        <li>Golf Course - Should highlight golf communities with green glow</li>
+        <li>New Construction - Should highlight new properties with pink glow</li>
+    </ul>
+
+    <p>4. Test Footer Buttons:</p>
+    <ul>
+        <li>Export Report - Should show alert about PDF export</li>
+        <li>Share - Should copy link or open share dialog</li>
+        <li>Contact Edmund - Should show contact information</li>
+    </ul>
+
+    <p>5. Open Browser Console (F12) to see debug messages</p>
+
+    <script>
+        console.log('If you see this message, JavaScript is working!');
+
+        // Test direct button functionality
+        setTimeout(() => {
+            const testBtn = document.createElement('button');
+            testBtn.textContent = 'Test Alert';
+            testBtn.onclick = () => alert('Button works!');
+            document.body.appendChild(testBtn);
+        }, 1000);
+    </script>
+</body>
+</html>
